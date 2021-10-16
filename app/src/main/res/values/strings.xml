@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BookReviewMVVM</string>
+    <string name="book_cover">Book Cover</string>
+    <string name="search_hint">Please enter your search keyword</string>
 </resources>
