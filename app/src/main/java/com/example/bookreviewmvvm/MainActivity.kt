@@ -1,5 +1,6 @@
 package com.example.bookreviewmvvm
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -110,7 +111,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun initBookRecyclerView() {
-        adapter = BookAdapter()
+        adapter = BookAdapter(itemClickListener = {
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("bookModel", it)
+            startActivity(intent)
+        })
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
     }
