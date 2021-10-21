@@ -194,6 +194,14 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (binding.historyRecyclerView.isVisible) {
+            binding.historyRecyclerView.isVisible = false
+            return
+        }
+    }
+
     companion object {
         private const val TAG = "MainActivity"
     }
