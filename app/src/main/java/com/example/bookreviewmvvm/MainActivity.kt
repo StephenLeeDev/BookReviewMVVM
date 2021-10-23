@@ -6,16 +6,20 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.bookreviewmvvm.adapter.BookAdapter
 import com.example.bookreviewmvvm.adapter.HistoryAdapter
 import com.example.bookreviewmvvm.api.BookService
+import com.example.bookreviewmvvm.api.Constant
 import com.example.bookreviewmvvm.api.Uri
 import com.example.bookreviewmvvm.databinding.ActivityMainBinding
 import com.example.bookreviewmvvm.model.BestSellerDto
 import com.example.bookreviewmvvm.model.History
 import com.example.bookreviewmvvm.model.SearchBookDto
+import com.example.bookreviewmvvm.viewmodel.BookViewModel
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,12 +42,22 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var bookService: BookService
     private lateinit var db: AppDatabase
 
+    private lateinit var bookViewModel: BookViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         job = Job()
+
+        binding.lifecycleOwner = this
+        bookViewModel = ViewModelProvider(this, BookViewModelFactory(BookRepository(BookService.getInstance()))).get(BookViewModel::class.java)
+
+        bookViewModel.bestSellerBooks.observe(this, Observer { books ->
+            adapter.submitList(books)
+        })
+        bookViewModel.getBestSellerBooks()
 
         initBookRecyclerView()
         initHistoryRecyclerView()
@@ -54,39 +68,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             "BookSearchDB"
         ).build()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(Uri.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(buildOkHttpClient())
-            .build()
-
-        bookService = retrofit.create(BookService::class.java)
-
-        bookService.getBestSellerBooks(getString(R.string.INTERPARK_BOOKS))
-            .enqueue(object : Callback<BestSellerDto> {
-                override fun onResponse(
-                    call: Call<BestSellerDto>,
-                    response: Response<BestSellerDto>
-                ) {
-
-                    if (response.isSuccessful.not()) {
-                        return
-                    }
-
-                    adapter.submitList(response.body()?.books.orEmpty())
-                }
-
-                override fun onFailure(call: Call<BestSellerDto>, t: Throwable) {
-
-                }
-            })
-
         initSearchEditText()
 
     }
 
     private fun search(keyword: String) {
-        bookService.getBooksByName(getString(R.string.INTERPARK_BOOKS), keyword)
+        bookService.getBooksByName(Constant.INTERPARK_BOOKS, keyword)
             .enqueue(object : Callback<SearchBookDto> {
                 override fun onResponse(
                     call: Call<SearchBookDto>,
