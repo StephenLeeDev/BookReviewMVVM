@@ -1,6 +1,5 @@
 package com.example.bookreviewmvvm
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -14,9 +13,7 @@ import com.example.bookreviewmvvm.adapter.BookAdapter
 import com.example.bookreviewmvvm.adapter.HistoryAdapter
 import com.example.bookreviewmvvm.api.BookService
 import com.example.bookreviewmvvm.api.Constant
-import com.example.bookreviewmvvm.api.Uri
 import com.example.bookreviewmvvm.databinding.ActivityMainBinding
-import com.example.bookreviewmvvm.model.BestSellerDto
 import com.example.bookreviewmvvm.model.History
 import com.example.bookreviewmvvm.model.SearchBookDto
 import com.example.bookreviewmvvm.viewmodel.BookViewModel
@@ -26,8 +23,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
@@ -98,11 +93,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun initBookRecyclerView() {
-        adapter = BookAdapter(itemClickListener = {
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("bookModel", it)
-            startActivity(intent)
-        })
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
     }
@@ -182,11 +172,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (binding.historyRecyclerView.isVisible) {
             binding.historyRecyclerView.isVisible = false
             return
         }
+        super.onBackPressed()
     }
 
     companion object {
