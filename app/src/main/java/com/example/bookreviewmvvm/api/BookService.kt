@@ -1,7 +1,7 @@
 package com.example.bookreviewmvvm.api
 
-import com.example.bookreviewmvvm.model.BestSellerDto
-import com.example.bookreviewmvvm.model.SearchBookDto
+import com.example.bookreviewmvvm.data.model.BestSellerDto
+import com.example.bookreviewmvvm.data.model.SearchBookDto
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

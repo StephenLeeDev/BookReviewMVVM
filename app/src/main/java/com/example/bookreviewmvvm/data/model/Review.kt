@@ -1,4 +1,4 @@
-package com.example.bookreviewmvvm.model
+package com.example.bookreviewmvvm.data.model
 
 
 import androidx.room.ColumnInfo

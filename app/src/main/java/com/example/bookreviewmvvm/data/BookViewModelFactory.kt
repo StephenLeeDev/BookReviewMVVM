@@ -1,8 +1,8 @@
-package com.example.bookreviewmvvm
+package com.example.bookreviewmvvm.data
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.bookreviewmvvm.viewmodel.BookViewModel
+import com.example.bookreviewmvvm.data.viewmodel.BookViewModel
 
 class BookViewModelFactory constructor(private val repository: BookRepository): ViewModelProvider.Factory {
 

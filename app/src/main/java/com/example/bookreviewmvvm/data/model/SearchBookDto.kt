@@ -1,9 +1,9 @@
-package com.example.bookreviewmvvm.model
+package com.example.bookreviewmvvm.data.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class BestSellerDto(
+data class SearchBookDto(
     @SerializedName("title")
     val title: String,
     @SerializedName("item")

@@ -1,4 +1,4 @@
-package com.example.bookreviewmvvm
+package com.example.bookreviewmvvm.data
 
 import com.example.bookreviewmvvm.api.BookService
 import com.example.bookreviewmvvm.api.Constant

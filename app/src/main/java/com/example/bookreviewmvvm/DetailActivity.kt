@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import com.example.bookreviewmvvm.data.AppDatabase
 import com.example.bookreviewmvvm.databinding.ActivityDetailBinding
-import com.example.bookreviewmvvm.model.Book
-import com.example.bookreviewmvvm.model.History
-import com.example.bookreviewmvvm.model.Review
+import com.example.bookreviewmvvm.data.model.Book
+import com.example.bookreviewmvvm.data.model.Review
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

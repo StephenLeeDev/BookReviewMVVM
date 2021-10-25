@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.bookreviewmvvm.DetailActivity
-import com.example.bookreviewmvvm.model.Book
+import com.example.bookreviewmvvm.data.model.Book
 
 class BindingAdapter {
 

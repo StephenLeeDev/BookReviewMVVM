@@ -1,10 +1,10 @@
-package com.example.bookreviewmvvm.viewmodel
+package com.example.bookreviewmvvm.data.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bookreviewmvvm.BookRepository
-import com.example.bookreviewmvvm.model.BestSellerDto
-import com.example.bookreviewmvvm.model.Book
+import com.example.bookreviewmvvm.data.BookRepository
+import com.example.bookreviewmvvm.data.model.BestSellerDto
+import com.example.bookreviewmvvm.data.model.Book
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

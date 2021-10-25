@@ -7,7 +7,7 @@
 
         <variable
             name="bookModel"
-            type="com.example.bookreviewmvvm.model.Book" />
+            type="com.example.bookreviewmvvm.data.model.Book" />
 
     </data>
 

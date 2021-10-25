@@ -13,10 +13,13 @@ import com.example.bookreviewmvvm.adapter.BookAdapter
 import com.example.bookreviewmvvm.adapter.HistoryAdapter
 import com.example.bookreviewmvvm.api.BookService
 import com.example.bookreviewmvvm.api.Constant
+import com.example.bookreviewmvvm.data.AppDatabase
+import com.example.bookreviewmvvm.data.BookRepository
+import com.example.bookreviewmvvm.data.BookViewModelFactory
+import com.example.bookreviewmvvm.data.model.History
+import com.example.bookreviewmvvm.data.model.SearchBookDto
+import com.example.bookreviewmvvm.data.viewmodel.BookViewModel
 import com.example.bookreviewmvvm.databinding.ActivityMainBinding
-import com.example.bookreviewmvvm.model.History
-import com.example.bookreviewmvvm.model.SearchBookDto
-import com.example.bookreviewmvvm.viewmodel.BookViewModel
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -93,6 +96,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun initBookRecyclerView() {
+        adapter = BookAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
     }

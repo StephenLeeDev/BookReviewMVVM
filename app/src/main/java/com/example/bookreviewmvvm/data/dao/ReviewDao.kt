@@ -1,11 +1,10 @@
-package com.example.bookreviewmvvm.dao
+package com.example.bookreviewmvvm.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.bookreviewmvvm.model.History
-import com.example.bookreviewmvvm.model.Review
+import com.example.bookreviewmvvm.data.model.Review
 
 @Dao
 interface ReviewDao {

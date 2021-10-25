@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookreviewmvvm.databinding.ItemBookBinding
-import com.example.bookreviewmvvm.model.Book
+import com.example.bookreviewmvvm.data.model.Book
 
 class BookAdapter: ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
 

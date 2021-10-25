@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookreviewmvvm.databinding.ItemHistoryBinding
-import com.example.bookreviewmvvm.model.History
+import com.example.bookreviewmvvm.data.model.History
 
 
 class HistoryAdapter(val historyDeleteClickListener: (String) -> (Unit)) : ListAdapter<History, HistoryAdapter.ViewHolder>(diffUtil) {
